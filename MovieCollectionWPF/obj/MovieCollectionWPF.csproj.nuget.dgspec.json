@@ -1,0 +1,179 @@
+{
+  "format": 1,
+  "restore": {
+    "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollectionWPF\\MovieCollectionWPF.csproj": {}
+  },
+  "projects": {
+    "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollectionWPF\\MovieCollectionWPF.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollectionWPF\\MovieCollectionWPF.csproj",
+        "projectName": "MovieCollectionWPF",
+        "projectPath": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollectionWPF\\MovieCollectionWPF.csproj",
+        "packagesPath": "C:\\Users\\kmihaylov.CorrStyle\\.nuget\\packages\\",
+        "outputPath": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollectionWPF\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\kmihaylov.CorrStyle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ComponentOne.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\ComponentOne\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollection\\MovieCollection.csproj": {
+                "projectPath": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollection\\MovieCollection.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "C1.Xaml.WPF.DataGrid": {
+              "target": "Package",
+              "version": "[4.6.20221.765, )"
+            },
+            "DotNetProjects.WpfToolkit.Input": {
+              "target": "Package",
+              "version": "[6.1.94, )"
+            },
+            "Fluent.Ribbon": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollection\\MovieCollection.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollection\\MovieCollection.csproj",
+        "projectName": "MovieCollection",
+        "projectPath": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollection\\MovieCollection.csproj",
+        "packagesPath": "C:\\Users\\kmihaylov.CorrStyle\\.nuget\\packages\\",
+        "outputPath": "T:\\SharedData\\Users_Folders\\Programming\\GitHub_Repositories\\Kaloyan_Mihaylov\\Repos\\MovieCollection\\MovieCollection\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\kmihaylov.CorrStyle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ComponentOne.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\ComponentOne\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,435 @@
+﻿<Fluent:RibbonWindow x:Class="MovieCollectionWPF.MainWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:Fluent="urn:fluent-ribbon"
+                     xmlns:ProjectProperties="clr-namespace:MovieCollectionWPF.Properties" 
+                     xmlns:input="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit"
+                     Title="My first RibbonWindow" 
+                     WindowStyle="SingleBorderWindow" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" BorderThickness="1" BorderBrush="LightGoldenrodYellow" Icon="T:\SharedData\Users_Folders\Programming\GitHub_Repositories\Kaloyan_Mihaylov\Repos\MovieCollection\MovieCollectionWPF\Resources\image2.png"
+                     Width="1400" 
+                     Height="815">
+
+    <Window.Resources>
+        
+        <Style x:Key="comboBoxToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border Background="LightGoldenrodYellow"></Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="comboItemStyle" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border BorderThickness="1" BorderBrush="#FF2D2D2D" Background="LightGoldenrodYellow">
+                            <ComboBoxItem FontFamily="Georgia" FontSize="20" HorizontalContentAlignment="Left" VerticalAlignment="Bottom">
+                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            </ComboBoxItem>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#FF2D2D2D"></Setter>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MyDataGridColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Background" Value="LightGoldenrodYellow"></Setter>
+            <Setter Property="Foreground" Value="#FF2D2D2D"></Setter>
+            <Setter Property="Height" Value="35" />
+            <Setter Property="BorderBrush" Value="#FF2D2D2D"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="FontFamily" Value="Georgia"></Setter>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="15"></Setter>
+
+        </Style>
+        
+        <Style x:Key="MyDataGridCell" TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+            <Setter Property="Foreground" Value="LightGoldenrodYellow"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="FontFamily" Value="Georgia"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="LightGoldenrodYellow"/>
+                    <Setter Property="Foreground" Value="#FF2D2D2D"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ClipToBounds="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <!-- the background for the button -->
+                            <Rectangle RadiusX="20" RadiusY="30" Grid.RowSpan="2">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Color="Yellow" Offset="0"/>
+                                            <GradientStop Color="LightGoldenrodYellow" Offset="0.9"/>
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <!-- the "gel" hilight at the top of the button -->
+                            <Border Margin="5" CornerRadius="14,14,4,4">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Color="LightGoldenrodYellow" Offset="0.1"/>
+                                            <GradientStop Color="LightGoldenrodYellow" Offset="0.5"/>
+                                            <GradientStop Color="Yellow" Offset="0.9"/>
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <!-- place for the content inside the button to be displayed -->
+                            <ContentPresenter Grid.RowSpan="2"   
+                          x:Name="PrimaryContent"
+                                              
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          Margin="{TemplateBinding Padding}" 
+                          Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" 
+                          />
+                        </Grid>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="gold" />
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="True">
+            <Fluent:Ribbon DockPanel.Dock="Top" x:Name="myRibbonMenu" Height="25" VerticalAlignment="Top" BorderThickness="0" Background="Black" FontFamily="Segoue UI" FontSize="10" Foreground="#FF1F1F1F" >
+                <Fluent:RibbonTabItem x:Name="fluentRibbonTabItem" Header="Movie Collection" Visibility="Collapsed" FontFamily="Segoue UI" FontSize="15" Foreground="Beige" BorderThickness="0">
+                </Fluent:RibbonTabItem>
+            </Fluent:Ribbon>
+            
+            <StackPanel Width="150" Height="775" HorizontalAlignment="Left" Background="#FF1F1F1F">
+                <DockPanel Height="160">
+                    <Image Source="T:\SharedData\Users_Folders\Programming\GitHub_Repositories\Kaloyan_Mihaylov\Repos\MovieCollection\MovieCollectionWPF\Resources\image2.png" Margin="0,20,0,20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonDown="Image_MouseLeftButtonDown">
+                    </Image>
+                </DockPanel>
+                <Button Style="{StaticResource ButtonStyle1}" x:Name="addMovieButton" Content="Add" Margin="10" FontSize="20" Width="100" Foreground="DimGray" FontFamily="Georgia" Click="addMovieButton_Click" MouseEnter="addMovieButton_MouseEnter" MouseLeave="addMovieButton_MouseLeave"></Button>
+                <Button Style="{StaticResource ButtonStyle1}" x:Name="updateMovieButton" Content="Update" Margin="10" FontSize="20" Width="100" Foreground="DimGray" FontFamily="Georgia" Click="updateMovieButton_Click" MouseEnter="updateMovieButton_MouseEnter" MouseLeave="updateMovieButton_MouseLeave"></Button>
+                <Button Style="{StaticResource ButtonStyle1}" x:Name="removeMovieButton" Content="Remove" Margin="10" FontSize="20" Width="100" Foreground="DimGray" FontFamily="Georgia" Click="removeMovieButton_Click" MouseEnter="removeMovieButton_MouseEnter" MouseLeave="removeMovieButton_MouseLeave"></Button>
+                <Button Style="{StaticResource ButtonStyle1}" x:Name="directorsButton" Content="Directors" Margin="10" FontSize="20" Width="100" Foreground="DimGray" FontFamily="Georgia" Click="directorsButton_Click" MouseEnter="directorsButton_MouseEnter" MouseLeave="directorsButton_MouseLeave"></Button>
+                <Label Margin="10" FontSize="20" Width="100" Height="20"></Label>
+                <Button Style="{StaticResource ButtonStyle1}" x:Name="searchMovieButton" Visibility="Collapsed" Content="Search" Margin="10" FontSize="20" Width="100" Foreground="DimGray" FontFamily="Georgia" Click="searchMovieButton_Click" MouseEnter="searchMovieButton_MouseEnter" MouseLeave="searchMovieButton_MouseLeave"></Button>
+                <Button Style="{StaticResource ButtonStyle1}" x:Name="sortMovieButton" Visibility="Collapsed" Content="Sort" Margin="10" FontSize="20" Width="100" Foreground="DimGray" FontFamily="Georgia" Click="sortMovieButton_Click" MouseEnter="sortMovieButton_MouseEnter" MouseLeave="sortMovieButton_MouseLeave"></Button>
+            </StackPanel>
+
+            <TabControl x:Name="myTabControl" Background="#FF2D2D2D" BorderThickness="2" Foreground="LightGoldenrodYellow" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="Auto" Width="Auto">
+
+                <TabItem x:Name="tabControlAddMovie" Visibility="Collapsed" FontSize="10" Height="20" Width="60">
+
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Content="Add a movie to your collection:" FontSize="30" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" HorizontalAlignment="Center" Margin="0,10,0,0"></Label>
+                        <DockPanel Margin="0,120,0,0" HorizontalAlignment="Right">
+                            <Label x:Name="lblMovieName" Content="Name:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <TextBox x:Name="txtBoxMovieName" TextAlignment="Center" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="500">
+                                <!--<TextBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="MovieName" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </TextBox.Text>-->
+                            </TextBox>
+                        </DockPanel>
+                        <DockPanel Margin="0,40,0,0" HorizontalAlignment="Right">
+                            <Label x:Name="lblMovieYear" Content="Year:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <TextBox x:Name="txtBoxMovieYear" TextAlignment="Center" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="500" PreviewTextInput="NumberValidationTextBox" MaxLength="4">
+                                <!--<TextBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="Year" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </TextBox.Text>-->
+                            </TextBox>
+                        </DockPanel>
+                        <DockPanel Margin="0,40,0,0" HorizontalAlignment="Right">
+                            <Label x:Name="lblMovieGenre" Content="Genre:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxMovieGenre" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="150" Margin="0,0,25,0">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="Genre" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                            <input:AutoCompleteBox x:Name="txtBoxMovieGenre2" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="150" Margin="0,0,25,0">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="Genre2" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                            <input:AutoCompleteBox x:Name="txtBoxMovieGenre3" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="150">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="Genre3" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                        </DockPanel>
+                        <DockPanel Margin="0,40,0,0" HorizontalAlignment="Right">
+                            <Label x:Name="lblMovieDirector" Content="Director:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxMovieDirector" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="500">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="DirectorName" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                        </DockPanel>
+                        <DockPanel Margin="0,40,0,0" HorizontalAlignment="Right">
+                            <Label x:Name="lblMovieStatus" Content="Status:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxMovieStatus" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="500">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="Status" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <DockPanel HorizontalAlignment="Left" Width="300" Margin="20,40,0,0">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="saveMovieButton" Content="Save" Width="200"  Height="30" FontSize="20" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Center" Click="saveMovieButton_Click" MouseEnter="saveMovieButton_MouseEnter" MouseLeave="saveMovieButton_MouseLeave"></Button>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right" Width="300" Margin="20,40,0,0">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="discardMovieButton" Content="Discard" Width="200"  FontSize="20" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Center" Click="discardMovieButton_Click" MouseEnter="discardMovieButton_MouseEnter" MouseLeave="discardMovieButton_MouseLeave"></Button>
+                            </DockPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="tabControlRemoveMovie" Visibility="Collapsed" FontSize="10" Height="20" Width="60">
+
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Content="Remove a movie from your collection:" FontSize="30" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" HorizontalAlignment="Center" Margin="0,10,0,0"></Label>
+
+                        <DockPanel Margin="0,120,0,0" HorizontalAlignment="Center">
+                            <Label x:Name="lblMovieId" Content="ID:" HorizontalAlignment="Left" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxMovieId" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="150" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" TextChanged="txtBoxMovieId_TextChanged">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="MovieID" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                        </DockPanel>
+
+                        <DockPanel Margin="15,40,35,0" HorizontalAlignment="Center">
+                            <Label x:Name="lblRemoveMovieName" Content="Name:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxRemoveMovieName" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="500" HorizontalAlignment="Center" TextChanged="txtBoxRemoveMovieName_TextChanged">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="MovieID" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <DockPanel HorizontalAlignment="Left" Width="300" Margin="20,40,0,0">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="saveMovieRemoveButton" Content="Save" Width="200" Height="30" FontSize="20" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Center" Click="saveMovieRemoveButton_Click" MouseEnter="saveMovieRemoveButton_MouseEnter" MouseLeave="saveMovieRemoveButton_MouseLeave"></Button>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right" Width="300" Margin="20,40,0,0">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="discardMovieRemoveButton" Content="Discard" Width="200" FontSize="20" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Center" Click="discardMovieRemoveButton_Click" MouseEnter="discardMovieRemoveButton_MouseEnter" MouseLeave="discardMovieRemoveButton_MouseLeave"></Button>
+                            </DockPanel>
+                        </DockPanel>
+
+                        <DockPanel Margin="0,40,0,0" HorizontalAlignment="Center">
+                            <Label x:Name="lblRemovedMovie" Content="" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,40,0,0" ></Label>
+                        </DockPanel>
+                    </StackPanel>
+
+                </TabItem>
+
+                <TabItem x:Name="tabControlUpdateMovie" Visibility="Collapsed" FontSize="10" Height="20" Width="60">
+
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Content="Update the movie status:" FontSize="30" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" HorizontalAlignment="Center" Margin="0,10,0,0"></Label>
+
+                        <DockPanel Margin="0,120,0,0" HorizontalAlignment="Center">
+                            <Label x:Name="lblUpdateMovieId" Content="ID:" HorizontalAlignment="Left" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxUpdateMovieId" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="150" HorizontalAlignment="Center" PreviewTextInput="NumberValidationTextBox" TextChanged="txtBoxUpdateMovieId_TextChanged">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="MovieID" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+
+                        </DockPanel>
+                        <DockPanel Margin="0,40,35,0" HorizontalAlignment="Center">
+                            <Label x:Name="lblUpdateMovieStatus" Content="Status:" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,0,20,0"></Label>
+                            <input:AutoCompleteBox x:Name="txtBoxUpdateMovieStatus" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="150" HorizontalAlignment="Center">
+                                <input:AutoCompleteBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </input:AutoCompleteBox.TextBoxStyle>
+                                <!--<input:AutoCompleteBox.Text>
+                                    <Binding Source="{x:Static ProjectProperties:Settings.Default}" Path="MovieID" 
+                          Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </input:AutoCompleteBox.Text>-->
+                            </input:AutoCompleteBox>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <DockPanel HorizontalAlignment="Left" Width="300" Margin="20,40,0,0">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="saveMovieUpdateButton" Content="Save" Width="200" Height="30" HorizontalAlignment="Center" FontSize="20" Foreground="DimGray" FontFamily="Georgia" Click="saveMovieUpdateButton_Click" MouseEnter="saveMovieUpdateButton_MouseEnter" MouseLeave="saveMovieUpdateButton_MouseLeave"></Button>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right" Width="300" Margin="20,40,0,0">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="discardMovieUpdateButton" Content="Discard" Width="200" HorizontalAlignment="Center" FontSize="20" Foreground="DimGray" FontFamily="Georgia" Click="discardMovieUpdateButton_Click" MouseEnter="discardMovieUpdateButton_MouseEnter" MouseLeave="discardMovieUpdateButton_MouseLeave"></Button>
+                            </DockPanel>
+                        </DockPanel>
+
+                        <DockPanel Margin="0,40,0,0" HorizontalAlignment="Center">
+                            <Label x:Name="lblUpdatedMovie" Content="" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,40,0,0" ></Label>
+                        </DockPanel>
+                    </StackPanel>
+
+                </TabItem>
+
+                <TabItem x:Name="tabControlMovieCollection" Visibility="Collapsed" FontSize="10" Height="20" Width="60">
+                    <StackPanel>
+                        <DockPanel x:Name="panelGenres" Height="50" Visibility="Visible">
+                            <DockPanel HorizontalAlignment="Left">
+                                <Label x:Name="lblSearch" Content="Search:" HorizontalAlignment="Right" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,10,0,0"></Label>
+                                <input:AutoCompleteBox x:Name="txtBoxSearch" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="300" Height="30" HorizontalAlignment="Right" 
+                                                   PreviewKeyDown="txtBoxSearch_PreviewKeyDown">
+                                    <input:AutoCompleteBox.TextBoxStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="TextAlignment" Value="Left"></Setter>
+                                        </Style>
+                                    </input:AutoCompleteBox.TextBoxStyle>
+                                </input:AutoCompleteBox>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="actionButton" Content="Action" Width="50" Margin="10,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="actionButton_Click" MouseEnter="actionButton_MouseEnter" MouseLeave="actionButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="adventureButton" Content="Adventure" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="adventureButton_Click" MouseEnter="adventureButton_MouseEnter" MouseLeave="adventureButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="animationButton" Content="Animation" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="animationButton_Click" MouseLeave="animationButton_MouseLeave" MouseEnter="animationButton_MouseEnter"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="crimeButton" Content="Crime" Width="50" FontSize="13" Margin="0,10,5,10" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="crimeButton_Click" MouseEnter="crimeButton_MouseEnter" MouseLeave="crimeButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="comedyButton" Content="Comedy" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="comedyButton_Click" MouseEnter="comedyButton_MouseEnter" MouseLeave="comedyButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="documentaryButton" Content="Documentary" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="documentaryButton_Click" MouseEnter="documentaryButton_MouseEnter" MouseLeave="documentaryButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="dramaButton" Content="Drama" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="dramaButton_Click" MouseEnter="dramaButton_MouseEnter" MouseLeave="dramaButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="fantasyButton" Content="Fantasy" Width="50" FontSize="13" Margin="0,10,5,10" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="fantasyButton_Click" MouseEnter="fantasyButton_MouseEnter" MouseLeave="fantasyButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="historicalButton" Content="Historical" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="historicalButton_Click" MouseEnter="historicalButton_MouseEnter" MouseLeave="historicalButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="horrorButton" Content="Horror" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="horrorButton_Click" MouseEnter="horrorButton_MouseEnter" MouseLeave="horrorButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="misteryButton" Content="Mistery" Width="50" FontSize="13" Margin="0,10,5,10" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="misteryButton_Click" MouseEnter="misteryButton_MouseEnter" MouseLeave="misteryButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="romanceButton" Content="Romance" Width="50" FontSize="13" Margin="0,10,5,10" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="romanceButton_Click" MouseEnter="romanceButton_MouseEnter" MouseLeave="romanceButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="scifiButton" Content="Sci-Fi" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="scifiButton_Click" MouseEnter="scifiButton_MouseEnter" MouseLeave="scifiButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="thrillerButton" Content="Thriller" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="thrillerButton_Click" MouseEnter="thrillerButton_MouseEnter" MouseLeave="thrillerButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="westernButton" Content="Western" Width="50" FontSize="13" Margin="0,10,5,10" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Left" Click="westernButton_Click" MouseEnter="westernButton_MouseEnter" MouseLeave="westernButton_MouseLeave"/>
+                            </DockPanel>
+
+                        </DockPanel>
+                        <DockPanel x:Name="panelSort" Height="50">
+                            <DockPanel HorizontalAlignment="Left">
+                                <TextBlock x:Name="txtBlockMoviesCount" Text="" FontSize="20" FontFamily="Georgia" Width="300" Foreground="LightGoldenrodYellow" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right" x:Name="dockPanelSort">
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="sortNameMovieButton" Content="Name" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Right" Click="sortNameMovieButton_Click" MouseEnter="sortNameMovieButton_MouseEnter" MouseLeave="sortNameMovieButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="sortYearMovieButton" Content="Year" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Right" Click="sortYearMovieButton_Click" MouseEnter="sortYearMovieButton_MouseEnter" MouseLeave="sortYearMovieButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="sortDirectorMovieButton" Content="Director" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Right" Click="sortDirectorMovieButton_Click" MouseEnter="sortDirectorMovieButton_MouseEnter" MouseLeave="sortDirectorMovieButton_MouseLeave"/>
+                                <Button Style="{StaticResource ButtonStyle1}" x:Name="sortStatusMovieButton" Content="Status" Width="50" Margin="0,10,5,10" FontSize="13" Foreground="DimGray" FontFamily="Georgia" HorizontalAlignment="Right" Click="sortStatusMovieButton_Click" MouseEnter="sortStatusMovieButton_MouseEnter" MouseLeave="sortStatusMovieButton_MouseLeave"/>
+                            </DockPanel>
+                        </DockPanel>
+                        <DataGrid x:Name="moviesInTheCollection" ColumnHeaderStyle="{StaticResource MyDataGridColumnHeader}" CellStyle="{StaticResource MyDataGridCell}" BorderBrush="LightGoldenrodYellow" BorderThickness="1"
+                              Background="#FF2D2D2D" AutoGenerateColumns="True" AutoGeneratingColumn="moviesInTheCollection_AutoGeneratingColumn" CanUserResizeColumns="False" HeadersVisibility="Column" Width="1242">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="moviesInTheCollection_MouseDoubleClick"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+                        </DataGrid>
+
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="tabControlDirectors" Visibility="Collapsed" FontSize="10" Height="20" Width="60">
+                    <StackPanel>
+                        <DockPanel>
+                            <DockPanel HorizontalAlignment="Left" Height="50">
+                                <Label x:Name="lblSearchDirector" Content="Search:" HorizontalAlignment="Right" FontFamily="Georgia" FontWeight="DemiBold" Foreground="LightGoldenrodYellow" FontSize="20" Margin="0,10,0,0"></Label>
+                                <input:AutoCompleteBox x:Name="txtBoxSearchDirector" FontFamily="Georgia" FontStyle="Italic" FontWeight="DemiBold" FontSize="20" Background="LightGoldenrodYellow" Foreground="DimGray" Width="300" Height="30" HorizontalAlignment="Right" 
+                                                   PreviewKeyDown="txtBoxSearchDirector_PreviewKeyDown">
+                                    <input:AutoCompleteBox.TextBoxStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="TextAlignment" Value="Left"></Setter>
+                                        </Style>
+                                    </input:AutoCompleteBox.TextBoxStyle>
+                                </input:AutoCompleteBox>
+                            </DockPanel>
+                        </DockPanel>
+                       
+                        <DockPanel HorizontalAlignment="Left">
+                            <DataGrid x:Name="directorsInTheCollection" ColumnHeaderStyle="{StaticResource MyDataGridColumnHeader}" CellStyle="{StaticResource MyDataGridCell}" BorderBrush="LightGoldenrodYellow" BorderThickness="1"
+                                           Background="#FF2D2D2D" AutoGenerateColumns="True" AutoGeneratingColumn="directorsInTheCollection_AutoGeneratingColumn" CanUserResizeColumns="False" HeadersVisibility="Column" Width="470" Margin="0,0,0,0">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <EventSetter Event="MouseDoubleClick" Handler="directorsInTheCollection_MouseDoubleClick"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                            </DataGrid>
+                        </DockPanel>
+                    </StackPanel>
+                </TabItem>
+
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Fluent:RibbonWindow>
